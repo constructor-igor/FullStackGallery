@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMS.Infra", "BMS.Infra\BMS.Infra.csproj", "{270AF7CC-4CBB-49B1-B764-823BD29CA016}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMS.Tests", "BMS.Tests\BMS.Tests.csproj", "{9C780C0F-9619-4D56-9ADA-2754D851F33D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{270AF7CC-4CBB-49B1-B764-823BD29CA016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{270AF7CC-4CBB-49B1-B764-823BD29CA016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{270AF7CC-4CBB-49B1-B764-823BD29CA016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C780C0F-9619-4D56-9ADA-2754D851F33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C780C0F-9619-4D56-9ADA-2754D851F33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C780C0F-9619-4D56-9ADA-2754D851F33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C780C0F-9619-4D56-9ADA-2754D851F33D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -75,7 +75,7 @@ using System.Text;
 
 namespace Coordinates
 {
-    static class Converters
+    public static class Converters
     {
         public const int eWGS84 = 0;
         public const int eGRS80 = 1;

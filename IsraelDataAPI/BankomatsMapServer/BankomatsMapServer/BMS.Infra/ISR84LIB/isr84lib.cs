@@ -70,10 +70,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Coordinates
+namespace BMS.Infra.ISR84LIB
 {
     public static class Converters
     {

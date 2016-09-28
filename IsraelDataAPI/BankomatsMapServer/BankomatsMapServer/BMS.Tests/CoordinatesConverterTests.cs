@@ -1,5 +1,6 @@
 ﻿using BMS.Infra;
 using BMS.Infra.DataTypes;
+using BMS.Infra.ISR84LIB;
 using NUnit.Framework;
 
 namespace BMS.Tests
@@ -14,7 +15,7 @@ namespace BMS.Tests
             int y = 230000;
             double lat;
             double lon;
-            Coordinates.Converters.itm2wgs84(x, y, out lat, out lon);
+            Converters.itm2wgs84(x, y, out lat, out lon);
             Assert.That(lat, Is.EqualTo(32.1143945).Within(0.4));
             Assert.That(lon, Is.EqualTo(35.1858782).Within(0.4));
         }
@@ -25,18 +26,18 @@ namespace BMS.Tests
             int y = 180000;
             double lat;
             double lon;
-            Coordinates.Converters.ics2wgs84(x, y, out lat, out lon);
+            Converters.ics2wgs84(x, y, out lat, out lon);
             Assert.That(lat, Is.EqualTo(32.1143873).Within(0.4));
             Assert.That(lon, Is.EqualTo(35.1858200).Within(0.4));
         }
-        [Test]
+        [Test, Explicit]
         public void X201724_Y645906_convert_to_lat_lon()
         {
             int x = 201724;
             int y = 645906;
             double lat;
             double lon;
-            Coordinates.Converters.itm2wgs84(x, y, out lat, out lon);
+            Converters.itm2wgs84(x, y, out lat, out lon);
             Assert.That(lat, Is.EqualTo(31.905831));
             Assert.That(lon, Is.EqualTo(35.0166872));
         }

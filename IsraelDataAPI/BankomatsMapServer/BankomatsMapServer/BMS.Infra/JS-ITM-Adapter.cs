@@ -2,11 +2,18 @@
 using System.IO;
 using System.Reflection;
 using BMS.Infra.DataTypes;
+using Jurassic;
 
 namespace BMS.Infra
 {
     public class JS_ITM_Adapter
     {
+        private readonly ScriptEngine m_engine;
+        public JS_ITM_Adapter()
+        {
+            m_engine = new ScriptEngine();
+            m_engine.ExecuteFile(Path.Combine(AssemblyDirectory, @"JS-ITEM\js-itm.js"));
+        }
         public LatLonPoint Convert_ITM_to_LatLon(ITMPoint itmPoint)
         {
             //var engine = new Jurassic.ScriptEngine();
@@ -14,11 +21,8 @@ namespace BMS.Infra
             //engine.SetGlobalValue("y", itmPoint.Y);
             //engine.ExecuteFile(Path.Combine(AssemblyDirectory, @"JS-ITEM\js-itm.js"));
             //string result = engine.GetGlobalValue<string>("result");
-
-            var engine = new Jurassic.ScriptEngine();
-            engine.ExecuteFile(Path.Combine(AssemblyDirectory, @"JS-ITEM\js-itm.js"));
-            string result = engine.CallGlobalFunction<string>("Run", itmPoint.X, itmPoint.Y);
-
+            
+            string result = m_engine.CallGlobalFunction<string>("Run", itmPoint.X, itmPoint.Y);
             string[] resultValues = result.Split(' ');
             return new LatLonPoint(Double.Parse(resultValues[0]), Double.Parse(resultValues[1]));
         }

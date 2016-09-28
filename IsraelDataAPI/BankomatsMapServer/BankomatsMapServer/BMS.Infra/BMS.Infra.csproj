@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="isr84lib.cs" />
+    <Compile Include="ISR84LIB\isr84lib.cs" />
     <Compile Include="DataTypes\ITMPoint.cs" />
     <Compile Include="JS-ITM-Adapter.cs" />
     <Compile Include="DataTypes\LatLonPoint.cs" />

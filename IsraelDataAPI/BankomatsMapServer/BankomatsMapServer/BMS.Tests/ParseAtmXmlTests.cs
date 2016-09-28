@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
+using BMS.Infra;
+using BMS.Infra.DataTypes;
 using NUnit.Framework;
 
 namespace BMS.Tests
@@ -26,7 +29,7 @@ namespace BMS.Tests
         }
 
         [Test]
-        public void ParseTest()
+        public void ParseXmlAndGenerateMapMarkersTest()
         {
             const string inputXmlFile = @"..\..\..\..\..\modiin-atm.xml";
             string inputXmlPath = Path.GetFullPath(Path.Combine(AssemblyDirectory, inputXmlFile));
@@ -39,6 +42,17 @@ namespace BMS.Tests
 
                 Assert.That(bankomatsList.BankomatsList.Length, Is.EqualTo(31));
                 Assert.That(bankomatsList.BankomatsList.Any(b=>b.X==0 || b.Y==0), Is.False);
+
+                StringBuilder markers = new StringBuilder();
+                JS_ITM_Adapter adapter = new JS_ITM_Adapter();
+                bankomatsList.BankomatsList
+                    .Select(bankoMat => new ITMPoint(bankoMat.X, bankoMat.Y))
+                    .Select(itmPoint=>adapter.Convert_ITM_to_LatLon(itmPoint))
+                .Each(point=> 
+                {
+                    markers.AppendLine("new google.maps.Marker({position: {lat: " + point.Latitude + ", lng: " + point.Longitude + "}, map: map});");
+                });
+                Console.WriteLine(markers.ToString());
             }
         }
 
@@ -68,5 +82,16 @@ namespace BMS.Tests
         public int X;
         [XmlElement(ElementName = "קואורדינטת_Y")]
         public int Y;
+    }
+
+    public static class Extensions
+    {
+        public static void Each<T>(this IEnumerable<T> list, Action<T> action)
+        {
+            foreach (T item in list)
+            {
+                action(item);
+            }
+        }
     }
 }

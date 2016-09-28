@@ -27,7 +27,7 @@ namespace BMS.Infra
             return new LatLonPoint(Double.Parse(resultValues[0]), Double.Parse(resultValues[1]));
         }
 
-        public static string AssemblyDirectory
+        private string AssemblyDirectory
         {
             get
             {

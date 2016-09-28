@@ -78,6 +78,14 @@ namespace BMS.Tests
     {
         [XmlElement(ElementName = "קוד_בנק")]
         public int BanksCode;
+        [XmlElement(ElementName = "שם_בנק")]
+        public string BanksName;
+        [XmlElement(ElementName = "קוד_סניף")]
+        public int BeanchsCode;
+        [XmlElement(ElementName = "כתובת_ה-ATM")]
+        public string Address;
+        [XmlElement(ElementName = "ישוב")]
+        public string Location;
         [XmlElement(ElementName = "קואורדינטת_X")]
         public int X;
         [XmlElement(ElementName = "קואורדינטת_Y")]
